@@ -40,7 +40,7 @@ class FSHomeHeaderCategory extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   CircleAvatar(
-                    radius: 18,
+                    radius: 20,
                     backgroundColor: Colors.cyan[100],
                     backgroundImage: CachedNetworkImageProvider("https://cataas.com/cat"),
                   ),

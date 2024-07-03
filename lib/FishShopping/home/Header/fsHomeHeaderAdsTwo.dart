@@ -95,75 +95,73 @@ class FSHomeHeaderAdsTwo extends StatelessWidget {
   }
 
   Widget buildRowThreeWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-
-        Container(
-          height: 80,
-          child:  Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-            buildAdsItemWidget(_adsList[2]),
-            Container(
-              height: 26,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.orange, Colors.red],
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(13)),
-              ),
-              child:  TextButton(
-                //color: Colors.red,
-                onPressed: () {},
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.only(left: 20, right: 6)),
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                  ),
-                ),
-
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      "57类上门回收",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
+    return Padding(
+      padding: EdgeInsets.only(top: 1), // 增加顶部间距
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+              height: 80,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  buildAdsItemWidget(_adsList[2]),
+                  Container(
+                      height: 20,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.orange, Colors.red],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(13)),
                       ),
-                    ),
-                    SizedBox(width: 8,),
-                    Icon(
-                      Icons.chevron_right,
-                      color: Colors.white,
-                      size: 16,
-                    )
-                  ],
-                ),
+                      child: TextButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(EdgeInsets.only(left: 20, right: 6)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "57类上门回收",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                            SizedBox(width: 8,),
+                            Icon(
+                              Icons.chevron_right,
+                              color: Colors.white,
+                              size: 16,
+                            )
+                          ],
+                        ),
+                      )
+                  ),
+                ],
               )
-            ),
-          ],
-        )),
-
-        SizedBox(
-          width: 20,
-        ),
-
-        buildRowThreeItem("手机回收"),
-        buildRowThreeItem("旧衣回收"),
-        buildRowThreeItem("卡券回收"),
-
-      ],
+          ),
+          SizedBox(width: 20,),
+          buildRowThreeItem("手机回收"),
+          buildRowThreeItem("旧衣回收"),
+          buildRowThreeItem("卡券回收"),
+        ],
+      ),
     );
   }
 
+
   Widget buildRowThreeItem(String title) {
-    return 
+    return
     Padding(
+
       padding: EdgeInsets.only(left: 6, right: 6),
       child: Column(
         children: <Widget>[
@@ -171,6 +169,7 @@ class FSHomeHeaderAdsTwo extends StatelessWidget {
             width: 50,
             height: 50,
             image: CachedNetworkImageProvider("https://cataas.com/cat"),
+            fit: BoxFit.cover,
           ),
           SizedBox(height: 5,),
           Text(
@@ -187,7 +186,7 @@ class FSHomeHeaderAdsTwo extends StatelessWidget {
 
   // item 
   Widget buildAdsItemWidget(FSHomeAdsModel model) {
-    return Expanded(child: 
+    return Expanded(child:
       Container(
         padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
         color: Colors.white,
@@ -200,13 +199,16 @@ class FSHomeHeaderAdsTwo extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: CachedNetworkImageProvider(model.imgUrl),
+                  fit: BoxFit.cover,//保持图片比例
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(4)),
               ),
             ),
+            SizedBox(width: 10,),//增加间距
 
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
                   model.title,
@@ -225,8 +227,8 @@ class FSHomeHeaderAdsTwo extends StatelessWidget {
                   )
                 ),
               ],
-            ), 
-  
+            ),
+
           ],
         ),
       )

@@ -32,16 +32,17 @@ class FSHomeHeaderAdsOne extends StatelessWidget {
           ),
         ),
 
-        // h - line 
-        Padding(
-          padding: EdgeInsets.only(top: 54),
-          child: Divider(),
-        ),
-        // h - line 
-        Padding(
-          padding: EdgeInsets.only(top: 116),
-          child: Divider(),
-        ),
+        // h - line
+        //去掉了分割线
+        // Padding(
+        //   padding: EdgeInsets.only(top: 54),
+        //   child: Divider(),
+        // ),
+        // // h - line
+        // Padding(
+        //   padding: EdgeInsets.only(top: 116),
+        //   child: Divider(),
+        // ),
 
         // 自己添加 v-line 
         // Padding(
@@ -65,7 +66,7 @@ class FSHomeHeaderAdsOne extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             buildAdsItemWidget(_adsOne[index]),
-            VerticalDivider(),
+            //VerticalDivider(),
             buildAdsItemWidget(_adsOne[index + 1]),
         
           ],
@@ -115,7 +116,7 @@ class FSHomeHeaderAdsOne extends StatelessWidget {
           flex: 1,
           child: 
           Container(
-            height: 60,
+            height: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(14)),
               image: DecorationImage(
@@ -160,8 +161,8 @@ class FSHomeHeaderAdsOne extends StatelessWidget {
               ],
             ), 
             Container(
-              width: 40,
-              height: 40,
+              width: 80,//调整了图片大小
+              height: 60,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: CachedNetworkImageProvider(model.imgUrl),

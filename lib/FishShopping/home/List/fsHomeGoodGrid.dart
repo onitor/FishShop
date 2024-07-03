@@ -78,19 +78,21 @@ class _FHHomeGoodGridState extends State<FHHomeGoodGrid> with AutomaticKeepAlive
                     // 商品列表
                     SliverPadding(
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
-                      sliver: SliverMasonryGrid(
+                      sliver: SliverGrid(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2, // 每行展示两个商品
+                          crossAxisSpacing: 10.0,
+                          mainAxisSpacing: 10.0,
+                          childAspectRatio: 0.75, // 调整比例以适应内容
+                        ),
                         delegate: SliverChildBuilderDelegate(
                               (BuildContext context, int index) {
                             return FHHomeGoodItem(model: datas[index]);
                           },
                           childCount: datas.length,
                         ),
-                        gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                        ),
                       ),
                     ),
-
                     // 刷新控件
                     buildLoadingWidget(),
                   ],
