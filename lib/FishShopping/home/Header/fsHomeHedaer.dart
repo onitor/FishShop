@@ -14,9 +14,16 @@ class FSHomeHedaer extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Container(
-            height: 240,
+            height: 190,
             decoration: BoxDecoration(
-              color: Colors.yellow,
+              gradient: LinearGradient(
+                colors: [
+                  Colors.greenAccent,
+                  Colors.greenAccent,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10)
@@ -32,7 +39,7 @@ class FSHomeHedaer extends StatelessWidget {
                 SizedBox(height: 12,),
                 FSHomeHeaderAdsOne(),
                 SizedBox(height: 12,),
-                FSHomeHeaderAdsTwo(),
+                //FSHomeHeaderAdsTwo(),
               ],
             ),
           )

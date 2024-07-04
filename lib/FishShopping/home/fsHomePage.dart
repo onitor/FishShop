@@ -14,7 +14,7 @@ class FSHomePage extends StatefulWidget {
 
 class _FSHomePageState extends State<FSHomePage> with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
 
-  List<String> _list = ["关注","新鲜","手机","电脑","数码","租房","服装","家具",];
+  List<String> _list = ["猜你喜欢","最新发布","鱼币抵钱","省钱小组","数码","租房","服装","家具",];
 
   TabController ?_tabController;
 
@@ -49,7 +49,18 @@ class _FSHomePageState extends State<FSHomePage> with AutomaticKeepAliveClientMi
       title: buildSearchBar(),
       centerTitle: false,
       elevation: 0,
-      backgroundColor: Colors.yellow,
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.lightGreenAccent,
+              Colors.greenAccent,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )
+        ),
+      ),
       actions: <Widget>[
         IconButton(
           splashColor: Colors.transparent,
@@ -73,12 +84,12 @@ class _FSHomePageState extends State<FSHomePage> with AutomaticKeepAliveClientMi
     return NestedScrollView(
       headerSliverBuilder: ( (BuildContext context, bool innerIsScrolled) {
         return <Widget>[
-          // header 
+          // header
           SliverToBoxAdapter(
             child: FSHomeHedaer(),
           ),
 
-          // bar 
+          // bar
           SliverOverlapAbsorber(
             handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
 
