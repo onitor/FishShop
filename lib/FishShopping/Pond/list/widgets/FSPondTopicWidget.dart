@@ -50,9 +50,9 @@ class FSPondTopicWidget extends StatelessWidget {
 
   Widget _buildWrap() {
     return Container(
-      height: 80,
+      height: 120,
       decoration: BoxDecoration(
-        color: Colors.yellow,
+        color: Colors.greenAccent,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(6),
           bottomRight: Radius.circular(6)
@@ -65,7 +65,7 @@ class FSPondTopicWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: Container(
-        height: 246,
+        height: 253,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,

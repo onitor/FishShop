@@ -1,5 +1,3 @@
-
-import 'package:codes/FishShopping/utils/Screen.dart';
 import 'package:flutter/material.dart';
 
 class FSPostPage extends StatefulWidget {
@@ -10,12 +8,10 @@ class FSPostPage extends StatefulWidget {
 }
 
 class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
-  
-  AnimationController ?_rotateAnimation;
+  AnimationController? _rotateAnimation;
   Tween<double>? _rotationTween;
-  
-  AnimationController ?_moveAnimation;
-  Animation<EdgeInsets> ?movement;
+  AnimationController? _moveAnimation;
+  Animation<EdgeInsets>? movement;
 
   @override
   bool get wantKeepAlive => true;
@@ -30,8 +26,7 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
     //启动动画
     _rotateAnimation!.forward();
 
-
-    _moveAnimation = AnimationController(vsync: this, duration: Duration(microseconds: 1500));
+    _moveAnimation = AnimationController(vsync: this, duration: Duration(milliseconds: 1500));
     movement = EdgeInsetsTween(
       begin: EdgeInsets.only(top: 0.0),
       end: EdgeInsets.only(top: 100.0),
@@ -46,8 +41,8 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
       ),
     );
     _moveAnimation!.forward();
-    
   }
+
   @override
   void dispose() {
     _rotateAnimation?.dispose();
@@ -58,21 +53,148 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pop();
-      },
-      child: Container(
-        color: Colors.white,
-        child: Column(
-          children: <Widget>[
-            buildTopWidget(),
-            SizedBox(height: 350,),
-            buildBottomWidget(),
-            SizedBox(height: 80,),
-            buildCloseButton(),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+        child: Stack(
+          children: [
+            Container(
+              height: 250,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.lightGreenAccent, Colors.greenAccent],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+            ),
+            Column(
+              children: <Widget>[
+                buildHeader(),
+                SizedBox(height: 200),
+                buildAdSection(),
+                SizedBox(height: 20),
+                buildSecondaryAdSection(),
+                Spacer(),
+                buildCloseButton(),
+                SizedBox(height: 20),
+              ],
+            ),
           ],
-        )
+        ),
+      ),
+    );
+  }
+
+  Widget buildHeader() {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 100, 150, 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            "来闲鱼 搞点钱！",
+            style: TextStyle(
+              fontSize: 35,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          SizedBox(height: 5),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '3亿',
+                  style:TextStyle(
+                    fontSize: 20,
+                    color: Colors.red,
+            )
+                ),
+                TextSpan(
+                  text: '人在闲鱼赚钱',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  )
+                )
+              ]
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildAdSection() {
+    return Container(
+      padding: EdgeInsets.all(15),
+      color: Colors.yellow.shade100,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          buildAdItem("发闲置 >", "30s发布宝贝，啥都能换钱", Colors.yellow.shade700, Icons.camera_alt),
+          Image.asset(
+            'assets/mine.jpg',
+            width: 100,
+            height: 100,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildAdItem(String title, String subtitle, Color color, IconData icon) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+              color: color,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+          SizedBox(height: 5),
+          Text(
+            subtitle,
+            style: TextStyle(
+              color: Colors.black54,
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildSecondaryAdSection() {
+    return Column(
+      children: <Widget>[
+        buildSecondaryAdItem("一键转卖 >", "2年前买的手机耳机还能卖12元", Colors.grey.shade200),
+        buildSecondaryAdItem("闲鱼帮卖 >", "支持自己定价卖", Colors.grey.shade200),
+        buildSecondaryAdItem("极速回收 >", "免费上门回收", Colors.grey.shade200),
+        buildSecondaryAdItem("晒好物 >", "只晒不卖的宝贝", Colors.grey.shade200),
+      ],
+    );
+  }
+
+  Widget buildSecondaryAdItem(String title, String subtitle, Color color) {
+    return Container(
+      color: color,
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      margin: EdgeInsets.symmetric(vertical: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          buildAdItem(title, subtitle, Colors.black, Icons.local_offer),
+          Icon(Icons.arrow_forward_ios, size: 16, color: Colors.black54),
+        ],
       ),
     );
   }
@@ -86,141 +208,4 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
       ),
     );
   }
-
-  Widget buildTopWidget() {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(20, 100, 20, 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          buildTopItem(Icons.monetization_on, "淘宝转卖", Colors.red, Colors.red[50]!, "一键发布"),
-          buildTopItem(Icons.shopping_basket, "免费送", Colors.orange, Colors.orange[50]!,"赚闲鱼币"),
-          buildTopItem(Icons.crop_free, "扫码卖书", Colors.green, Colors.green[50]!, "图书换钱"),
-        ],
-      ),
-    );
-  }
-
-  Widget buildTopItem(IconData icon, String title, Color titleColor, Color backColor, String detail) {
-    return GestureDetector(
-      onDoubleTap: () {
-
-      },
-      child: Container(
-          width: (Screen.width(context) - 60 - 20) / 3,
-          height: 50,
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            color: backColor,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Stack(
-                    alignment: Alignment.center,
-                    children: <Widget>[
-                      Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                          color: titleColor,
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                      ),
-
-                      Icon(
-                        icon,
-                        size: 15,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: 3,
-                  ),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      color: titleColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500
-                    )
-                  )
-                ],
-              ),
-              
-              Text(
-                detail,
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 13,
-                  fontWeight: FontWeight.normal
-                )
-              )
-            ],
-          ),
-        ),
-    );
-  }
-
-  Widget buildBottomWidget() {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          buildBottomItem(Icons.crop_square, "发布闲置", Colors.yellow[400]!, 0),
-          buildBottomItem(Icons.flash_on, "信用回收", Colors.red[400]!, 0),
-          buildBottomItem(Icons.home, "发布租房", Colors.blue[400]!, 0),
-          buildBottomItem(Icons.edit, "发帖子", Colors.orange[400]!, 0),
-        ],
-      ),
-    );
-  }
-
-  Widget buildBottomItem(IconData icon, String title, Color backColor, int index) {
-    return GestureDetector(
-      onTap: () {
-        
-      },
-      child: Padding(
-        padding: EdgeInsets.zero,
-        child: Column(
-          children: <Widget>[
-            Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Container(
-                  width: 70,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35),
-                    color: backColor
-                  ),
-                ),
-                Icon(
-                  icon,
-                  size: 40,
-                  color: Colors.white,
-                )
-              ],
-            ),
-            SizedBox(height: 10,),
-            Text(
-              title,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 15,
-                fontWeight: FontWeight.normal
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
 }

@@ -52,33 +52,40 @@ class _FSMinePageState extends State<FSMinePage> with AutomaticKeepAliveClientMi
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      backgroundColor: Colors.yellow,
-      body: Stack(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 80),
-            height: Screen.height(context),
-            color: Colors.grey[100],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.lightGreenAccent, Colors.greenAccent],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          ListView(
-            controller: _scrollController,
-            children: <Widget>[
-              FSMineHeader(),
-              SizedBox(height: 10,),
-              FSMineSell(),
-              SizedBox(height: 10,),
-              FSMineBuy(),
-              SizedBox(height: 10,),
-              FSMinePlay(),
-              SizedBox(height: 10,),
-              FSMineTool(),
-              SizedBox(height: 40,),
-            ],
-          ),
-
-          FSMineNavibar(naviAlpha),
-        ],
-      )
+        ),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(top: 80),
+              height: MediaQuery.of(context).size.height,
+              color: Colors.grey[100],
+            ),
+            ListView(
+              controller: _scrollController,
+              children: <Widget>[
+                FSMineHeader(),
+                SizedBox(height: 10,),
+                FSMineSell(),
+                SizedBox(height: 10,),
+                FSMineBuy(),
+                SizedBox(height: 10,),
+                FSMinePlay(),
+                SizedBox(height: 10,),
+                FSMineTool(),
+                SizedBox(height: 40,),
+              ],
+            ),
+            FSMineNavibar(naviAlpha),
+          ],
+        ),
+      ),
     );
   }
 }

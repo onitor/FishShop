@@ -1,5 +1,4 @@
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 
@@ -35,7 +34,7 @@ class FSMineHeader extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
-                image: CachedNetworkImageProvider("https://cataas.com/cat"),
+                image: AssetImage("assets/new_avatar.jpg"),
                 fit: BoxFit.cover
               )
             ),
@@ -49,7 +48,7 @@ class FSMineHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "专卖小铺子",
+                  "天文馆的猫",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
@@ -59,7 +58,7 @@ class FSMineHeader extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  "昵称: 小铺子",
+                  "昵称: 猫",
                   style: TextStyle(
                     color: Colors.black87,
                     fontSize: 14
@@ -172,9 +171,13 @@ class FSMineHeader extends StatelessWidget {
 
   Widget buildBottomWrap() {
     return Container(
-      height: 140,
+      height: 190,
       decoration: BoxDecoration(
-        color: Colors.yellow,
+        gradient: LinearGradient(
+          colors: [Colors.lightGreenAccent,Colors.greenAccent],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(10),
           bottomRight: Radius.circular(10)

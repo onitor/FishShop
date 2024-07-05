@@ -41,9 +41,9 @@ class _FSMessageHeaderState extends State<FSMessageHeader> {
         children: <Widget>[
           // bottom yellow
           Container(
-            height: 64,
+            height: 130,
             decoration: BoxDecoration(
-              color: Colors.yellow,
+              color: Colors.greenAccent,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10)

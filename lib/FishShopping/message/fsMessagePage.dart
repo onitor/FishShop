@@ -38,20 +38,33 @@ class _FSMessagePageState extends State<FSMessagePage> with AutomaticKeepAliveCl
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.yellow,
-        title: Text(
-          "消息",
-          style: TextStyle(
-            fontSize: 17,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: Container(
+            height: 100,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.lightGreenAccent, Colors.greenAccent],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              title: Text(
+                "消息",
+                style: TextStyle(
+                  fontSize: 17,
+                ),
+              ),
+            ),
           ),
+
         ),
-      ),
-      body: buildBody(),
+        body: buildBody()
     );
   }
-
   // Widget body() {
   //   return Refresh(
   //     onHeaderRefresh: () {},
@@ -72,7 +85,7 @@ class _FSMessagePageState extends State<FSMessagePage> with AutomaticKeepAliveCl
         refreshFailedText: "刷新失败",
         noMoreText: "没有更多数据",
         infoText: "更新于 %T",
-        bgColor: Colors.yellow,
+        bgColor: Colors.greenAccent,
         textColor: Colors.black87,
       ),
       footer: ClassicalFooter(

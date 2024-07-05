@@ -66,7 +66,7 @@ class _FSPondListState extends State<FSPondList> with AutomaticKeepAliveClientMi
         refreshFailedText: "刷新失败",
         noMoreText: "没有更多数据",
         infoText: "更新于 %T",
-        bgColor: Colors.yellow,
+        bgColor: Colors.greenAccent,
         textColor: Colors.black87,
       ),
       footer: ClassicalFooter(

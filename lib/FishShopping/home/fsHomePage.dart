@@ -101,7 +101,7 @@ class _FSHomePageState extends State<FSHomePage> with AutomaticKeepAliveClientMi
               backgroundColor: innerIsScrolled ? Colors.white : Colors.grey[100],
               title: TabBar(
                   controller: _tabController,
-                  indicatorColor: Colors.yellow,
+                  indicatorColor: Colors.greenAccent,
                   indicatorWeight: 3,
                   indicatorPadding: EdgeInsets.fromLTRB(0, 0, 0, 6),
                   unselectedLabelStyle: TextStyle(color: Colors.black45, fontSize: 16),

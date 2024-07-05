@@ -14,7 +14,7 @@ class FSHomeHedaer extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Container(
-            height: 190,
+            height: 140,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [

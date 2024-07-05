@@ -27,7 +27,7 @@ class _FSHomeHeaderAdsOneState extends State<FSHomeHeaderAdsOne> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160, // 设置容器高度
+      height: 180, // 设置容器高度
       child: PageView.builder(
         controller: _pageController,
         itemCount: (_adsOne.length / 3).ceil(), // 计算页数
@@ -82,7 +82,7 @@ class _FSHomeHeaderAdsOneState extends State<FSHomeHeaderAdsOne> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
-              color: Colors.black,
+              color: Colors.blue.shade700,
             ),
           ),
           SizedBox(height: 5),
@@ -94,12 +94,15 @@ class _FSHomeHeaderAdsOneState extends State<FSHomeHeaderAdsOne> {
               color: Colors.black54,
             ),
           ),
-          SizedBox(height: 5),
-          Image.asset(
-            model.imgUrl,
-            height: 80,
-            width: 90,
-            fit: BoxFit.cover,
+          SizedBox(height: 10),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0), // 添加圆角
+            child: Image.asset(
+              model.imgUrl,
+              height: 80,
+              width: 110, // 增加图片宽度
+              fit: BoxFit.cover,
+            ),
           ),
         ],
       ),

@@ -17,7 +17,7 @@ class FSMineNavibar extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.fromLTRB(5, Screen.statusBarHeight(context), 0, 0),
             height: Screen.navigationBarHeight(context),
-            color: opacity == 0 ? Colors.transparent : Colors.yellow,
+            color: opacity == 0 ? Colors.transparent : Colors.greenAccent,
             child: Center(
               child: Text(
                 "专卖小铺子",

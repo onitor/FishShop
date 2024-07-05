@@ -41,28 +41,38 @@ class _FSPondPageState extends State<FSPondPage> with AutomaticKeepAliveClientMi
   }
 
   PreferredSizeWidget _buildAppbar() {
-    return AppBar(
-      backgroundColor: Colors.yellow,
-      elevation: 0,
-      title: Text(
-        "鱼塘",
-        style: TextStyle(
-          fontSize: 17,
-          color: Colors.black
+    return PreferredSize(
+      preferredSize: Size.fromHeight(kToolbarHeight + 36), // AppBar的高度
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.lightGreenAccent, Colors.greenAccent],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
         ),
-      ),
-      leading: IconButton(
-        onPressed: () {
-
-        },
-        icon: Icon(Icons.search)
-      ),
-      actions: <Widget>[
-        _buildPostButton(),
-      ],
-      bottom: PreferredSize(
-        preferredSize: Size(Screen.width(context), 36),
-        child: _buildTabBar(),
+        child: AppBar(
+          backgroundColor: Colors.transparent, // 将AppBar背景设置为透明
+          elevation: 0,
+          title: Text(
+            "鱼塘",
+            style: TextStyle(
+              fontSize: 17,
+              color: Colors.black,
+            ),
+          ),
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          ),
+          actions: <Widget>[
+            _buildPostButton(),
+          ],
+          bottom: PreferredSize(
+            preferredSize: Size(MediaQuery.of(context).size.width, 36),
+            child: _buildTabBar(),
+          ),
+        ),
       ),
     );
   }
