@@ -8,9 +8,9 @@ class FSPostPage extends StatefulWidget {
 }
 
 class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
-  AnimationController? _rotateAnimation;
+  AnimationController? _rotateAnimation;//旋转动画
   Tween<double>? _rotationTween;
-  AnimationController? _moveAnimation;
+  AnimationController? _moveAnimation;// 控制页面元素的移动动画
   Animation<EdgeInsets>? movement;
 
   @override
@@ -53,6 +53,11 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
+    var screenSize = MediaQuery.of(context).size;
+    var screenWidth = screenSize.width;
+    var screenHeight = screenSize.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: GestureDetector(
@@ -62,7 +67,7 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
         child: Stack(
           children: [
             Container(
-              height: 250,
+              height: screenHeight*0.3,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.lightGreenAccent, Colors.greenAccent],
@@ -73,14 +78,14 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
             ),
             Column(
               children: <Widget>[
-                buildHeader(),
-                SizedBox(height: 200),
-                buildAdSection(),
-                SizedBox(height: 20),
-                buildSecondaryAdSection(),
+                buildHeader(screenWidth),
+                SizedBox(height: screenHeight*0.025),
+                buildAdSection(screenWidth),
+                SizedBox(height: screenHeight*0.025),
+                buildSecondaryAdSection(screenWidth),
                 Spacer(),
                 buildCloseButton(),
-                SizedBox(height: 20),
+                SizedBox(height: screenHeight*0.025),
               ],
             ),
           ],
@@ -89,9 +94,9 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
     );
   }
 
-  Widget buildHeader() {
+  Widget buildHeader(double screenWidth) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 100, 150, 20),
+      padding: EdgeInsets.fromLTRB(0, 100, screenWidth*0.3, 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -129,25 +134,25 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
     );
   }
 
-  Widget buildAdSection() {
+  Widget buildAdSection(double screenWidth) {
     return Container(
       padding: EdgeInsets.all(15),
       color: Colors.yellow.shade100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          buildAdItem("发闲置 >", "30s发布宝贝，啥都能换钱", Colors.yellow.shade700, Icons.camera_alt),
+          buildAdItem("发闲置 >", "30s发布宝贝，啥都能换钱", Colors.yellow.shade700, Icons.camera_alt,screenWidth),
           Image.asset(
             'assets/mine.jpg',
-            width: 100,
-            height: 100,
+            width: screenWidth*0.25,
+            height: screenWidth*0.25,
           ),
         ],
       ),
     );
   }
 
-  Widget buildAdItem(String title, String subtitle, Color color, IconData icon) {
+  Widget buildAdItem(String title, String subtitle, Color color, IconData icon,double screenWidth) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,18 +178,18 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
     );
   }
 
-  Widget buildSecondaryAdSection() {
+  Widget buildSecondaryAdSection(double screenWidth) {
     return Column(
       children: <Widget>[
-        buildSecondaryAdItem("一键转卖 >", "2年前买的手机耳机还能卖12元", Colors.grey.shade200),
-        buildSecondaryAdItem("闲鱼帮卖 >", "支持自己定价卖", Colors.grey.shade200),
-        buildSecondaryAdItem("极速回收 >", "免费上门回收", Colors.grey.shade200),
-        buildSecondaryAdItem("晒好物 >", "只晒不卖的宝贝", Colors.grey.shade200),
+        buildSecondaryAdItem("一键转卖 >", "2年前买的手机耳机还能卖12元", Colors.grey.shade200,screenWidth),
+        buildSecondaryAdItem("闲鱼帮卖 >", "支持自己定价卖", Colors.grey.shade200,screenWidth),
+        buildSecondaryAdItem("极速回收 >", "免费上门回收", Colors.grey.shade200,screenWidth),
+        buildSecondaryAdItem("晒好物 >", "只晒不卖的宝贝", Colors.grey.shade200,screenWidth),
       ],
     );
   }
 
-  Widget buildSecondaryAdItem(String title, String subtitle, Color color) {
+  Widget buildSecondaryAdItem(String title, String subtitle, Color color,double screenWidth) {
     return Container(
       color: color,
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -192,7 +197,7 @@ class _FSPostPageState extends State<FSPostPage> with AutomaticKeepAliveClientMi
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          buildAdItem(title, subtitle, Colors.black, Icons.local_offer),
+          buildAdItem(title, subtitle, Colors.black, Icons.local_offer,screenWidth),
           Icon(Icons.arrow_forward_ios, size: 16, color: Colors.black54),
         ],
       ),
