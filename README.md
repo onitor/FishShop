@@ -1,8 +1,8 @@
 # flutter项目介绍
 
-（1）FishShop：基于https://github.com/fanyu/fish_shipping 原作者仿写的闲鱼app进行学习，并对源码进行了版本迭代与API更新（支持新版本Dart），以及对页面根据新版闲鱼进行改进（更新中）。
+FishShop：基于https://github.com/fanyu/fish_shipping 原作者仿写的闲鱼app进行学习，并对源码进行了版本迭代与API更新（支持新版本Dart），以及对页面根据新版闲鱼进行改进（更新中）。
 
-（2）MyApp：主要是对flutter中如何实现接口发送请求和数据库的学习。(ignore )
+
 
 ## 程序demo
 
